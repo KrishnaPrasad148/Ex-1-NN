@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>NAME : KRISHNA PRASAD S</H3>
+<H3>REGISTER NO.: 212223230108</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DATE : 18/8/25</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,12 +37,80 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```py
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+df = pd.read_csv("Churn_Modelling.csv")
+df
+
+df.isnull().sum()
+
+df.fillna(0)
+df.isnull().sum()
+
+df.duplicated()
+
+df['EstimatedSalary'].describe()
+
+scaler = StandardScaler()
+inc_cols = ['CreditScore', 'Tenure', 'Balance', 'EstimatedSalary']
+scaled_values = scaler.fit_transform(df[inc_cols])
+df[inc_cols] = pd.DataFrame(scaled_values, columns = inc_cols, index = df.index)
+df
+
+x = df.iloc[:, :-1]
+y = df.iloc[:, -1]
+
+print("X Values")
+x
+
+print("Y Values")
+y
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
+
+print("X Training data")
+x_train
+
+print("X Testing data")
+x_test
+
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
 
+### DATASET:
+![alt text](Dataset.png)
+
+### MISSING VALUES:
+![alt text](Missing_values.png)
+
+### DUPLICATES:
+![alt text](Duplicated_values.png)
+
+### OUTLIERS (SALARY):
+![alt text](Outlier_values.png)
+
+### NORMALIZED DATASET:
+![alt text](Normalized_dataset.png)
+
+### X_VALUES:
+![alt text](X_values.png)
+
+### Y_VALUES:
+![alt text](Y_values.png)
+
+### SPLITTING THE DATASET FOR TRAINING AND TESTING:
+### TRAINING_DATA:
+![alt text](Training_data.png)
+
+### TESTING DATA:
+![alt text](Testing_data.png)
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
