@@ -113,6 +113,6 @@ x_test
 ![alt text](Testing_data.png)
 
 ## RESULT:
-Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
+Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle
 
 
